@@ -1,7 +1,7 @@
 
 # coding: utf-8
 
-# In[40]:
+# Import Word List
 
 
 import urllib.request
@@ -20,7 +20,7 @@ for line in file:
     
 
 
-# In[41]:
+# Import State List
 
 
 from lxml import html
@@ -42,10 +42,8 @@ states = [str.lower() for str in states]
     
 
 
-# In[9]:
-
-
 #Cribbed this from https://www.geeksforgeeks.org/check-two-strings-common-substring/ with some changes- thanks, ChitraNayal!
+#This compares two strings and returns True if they share any common letters, otherwise False
 
 def twoStrings(s1, s2) : 
   
@@ -68,9 +66,6 @@ def twoStrings(s1, s2) :
     return False
 
 
-# In[10]:
-
-
 #Using twoStrings above, compare a word to a list of words.
 #If one matches, return that one
 #If none match, return NONE
@@ -90,9 +85,6 @@ def checkWord(word,wordlist):
     return 'NONE'
 
 
-# In[11]:
-
-
 #Run checkWord on each element in wordlist, then grab the lengths and zip to a final result list
 
 resultList = [checkWord(worditem,states) for worditem in wordlist]
@@ -100,7 +92,6 @@ lenList   = [len(word) for word in wordlist]
 final_list=list(zip(wordlist,resultList,lenList))
 
 
-# In[12]:
 
 
 #Determine the max length by iteration
@@ -117,8 +108,6 @@ for (word,result,len) in final_list:
     if (result != 'MULTIPLE' and result != 'NONE' and len == maxLen):
         print(word,':',result)
 
-
-# In[52]:
 
 
 #Extra Credit!  Finding the count per state
